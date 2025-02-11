@@ -41,7 +41,7 @@
     </string-array>
 
     <!-- Unidades para Volumen -->
-    <string-array name="units_volumen">
+    <string-array name="volumen">
         <item>litros</item>
         <item>mililitros</item>
         <item>galones</item>
@@ -55,7 +55,7 @@
     </string-array>
 
     <!-- Unidades para Longitud -->
-    <string-array name="units_longitud">
+    <string-array name="longitud">
         <item>metros</item>
         <item>centímetros</item>
         <item>kilómetros</item>
@@ -69,7 +69,7 @@
     </string-array>
 
     <!-- Unidades para Almacenamiento -->
-    <string-array name="units_almacenamiento">
+    <string-array name="almacenamiento">
         <item>bytes</item>
         <item>kilobytes</item>
         <item>megabytes</item>
@@ -83,7 +83,7 @@
     </string-array>
 
     <!-- Unidades para Tiempo -->
-    <string-array name="units_tiempo">
+    <string-array name="tiempo">
         <item>segundos</item>
         <item>minutos</item>
         <item>horas</item>
@@ -97,7 +97,7 @@
     </string-array>
 
     <!-- Unidades para Transferencia de Datos -->
-    <string-array name="units_transferencia_datos">
+    <string-array name="transferencia">
         <item>bps</item>
         <item>kbps</item>
         <item>mbps</item>

@@ -63,6 +63,36 @@ public class MainActivity extends AppCompatActivity {
                         spn = findViewById(R.id.spnAMasa);
                         a = spn.getSelectedItemPosition();
                         break;
+                    case 2: // Volumen
+                        spn = findViewById(R.id.spnDeVolumen);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnAVolumen);
+                        a = spn.getSelectedItemPosition();
+                        break;
+                    case 3: // Longitud
+                        spn = findViewById(R.id.spnDeLongitud);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnALongitud);
+                        a = spn.getSelectedItemPosition();
+                        break;
+                    case 4: // Almacenamiento
+                        spn = findViewById(R.id.spnDeAlmacenamiento);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnAAlmacenamiento);
+                        a = spn.getSelectedItemPosition();
+                        break;
+                    case 5: // Tiempo
+                        spn = findViewById(R.id.spnDeTiempo);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnATiempo);
+                        a = spn.getSelectedItemPosition();
+                        break;
+                    case 6: // Transferencia
+                        spn = findViewById(R.id.spnDeTransferencia);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnATransferencia);
+                        a = spn.getSelectedItemPosition();
+                        break;
                     // Repite para otras pestañas
                 }
 
@@ -92,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 class Conversores{
     // Valores de ejemplo, deberías llenarlos con los valores correctos
     double[][] valores = {
-            {1, 0.98, 7.73}, // Monedas (Ejemplo)
+            {1, 0.97, 20.63, 0.81, 152.33, 1.59, 1.43, 0.91, 86.69, 7.31}, // Monedas (Ejemplo)
             {1, 1000, 2.20462, 35.274, 0.001, 15432.4, 0.157473, 0.01, 1e+6, 1e+9}, // Masa (Kilos, Gramos, Libras, onzas)
             {1, 1000, 0.264172}, // Volumen (Litros, Mililitros, Galones)
             {1, 0.001, 0.453592}, // Longitud (Metros, Centímetros, Pulgadas)
