@@ -2,7 +2,7 @@
     <string name="app_name">myapplication</string>
 
     <!-- Categorías de conversiones -->
-    <string-array name="categories_array">
+    <string-array name="categories">
         <item>Moneda</item>
         <item>Masa</item>
         <item>Volumen</item>

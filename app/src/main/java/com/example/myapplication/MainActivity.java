@@ -18,6 +18,10 @@ import androidx.core.view.WindowInsetsCompat;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.text.InputFilter;
+import android.text.Spanned;
+
+
 
 public class MainActivity extends AppCompatActivity {
     TabHost tbh;
