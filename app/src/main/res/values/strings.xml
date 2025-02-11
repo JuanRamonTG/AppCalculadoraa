@@ -1,15 +1,113 @@
 <resources>
-    <string name="app_name">appcalculadoracom</string>
-    <string-array name="opciones">
-        <item>Suma</item>
-        <item>Resta</item>
-        <item>Multiplicación</item>
-        <item>División</item>
-        <item>Factorial</item>
-        <item>Porcentaje</item>
-        <item>Exponenciación</item>
-        <item>Raíz Cuadrada</item>
-        <item>Raíz Cúbica</item>
-        <item>Raíz n</item>
+    <string name="app_name">myapplication</string>
+
+    <!-- Categorías de conversiones -->
+    <string-array name="categories_array">
+        <item>Moneda</item>
+        <item>Masa</item>
+        <item>Volumen</item>
+        <item>Longitud</item>
+        <item>Almacenamiento</item>
+        <item>Tiempo</item>
+        <item>Transferencia de Datos</item>
     </string-array>
+
+    <!-- Unidades para Moneda -->
+    <string-array name="monedas">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>MXN</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>INR</item>
+        <item>CNY</item>
+    </string-array>
+
+    <!-- Unidades para Masa -->
+    <string-array name="masa">
+        <item>kg</item>
+        <item>g</item>
+        <item>lb</item>
+        <item>oz</item>
+        <item>tonelada</item>
+        <item>grano</item>
+        <item>stone</item>
+        <item>quintal</item>
+        <item>miligramos</item>
+        <item>microgramos</item>
+    </string-array>
+
+    <!-- Unidades para Volumen -->
+    <string-array name="units_volumen">
+        <item>litros</item>
+        <item>mililitros</item>
+        <item>galones</item>
+        <item>onzas líquidas</item>
+        <item>pintas</item>
+        <item>cuartos</item>
+        <item>centímetros cúbicos</item>
+        <item>metros cúbicos</item>
+        <item>pies cúbicos</item>
+        <item>yardas cúbicas</item>
+    </string-array>
+
+    <!-- Unidades para Longitud -->
+    <string-array name="units_longitud">
+        <item>metros</item>
+        <item>centímetros</item>
+        <item>kilómetros</item>
+        <item>millas</item>
+        <item>pies</item>
+        <item>yardas</item>
+        <item>pulgadas</item>
+        <item>millas náuticas</item>
+        <item>nanómetros</item>
+        <item>micrómetros</item>
+    </string-array>
+
+    <!-- Unidades para Almacenamiento -->
+    <string-array name="units_almacenamiento">
+        <item>bytes</item>
+        <item>kilobytes</item>
+        <item>megabytes</item>
+        <item>gigabytes</item>
+        <item>terabytes</item>
+        <item>petabytes</item>
+        <item>exabytes</item>
+        <item>zettabytes</item>
+        <item>yottabytes</item>
+        <item>kilobits</item>
+    </string-array>
+
+    <!-- Unidades para Tiempo -->
+    <string-array name="units_tiempo">
+        <item>segundos</item>
+        <item>minutos</item>
+        <item>horas</item>
+        <item>días</item>
+        <item>semanas</item>
+        <item>meses</item>
+        <item>años</item>
+        <item>milisegundos</item>
+        <item>microsegundos</item>
+        <item>nanosegundos</item>
+    </string-array>
+
+    <!-- Unidades para Transferencia de Datos -->
+    <string-array name="units_transferencia_datos">
+        <item>bps</item>
+        <item>kbps</item>
+        <item>mbps</item>
+        <item>gbps</item>
+        <item>tbps</item>
+        <item>bytes/s</item>
+        <item>kilobytes/s</item>
+        <item>megabytes/s</item>
+        <item>gigabytes/s</item>
+        <item>terabytes/s</item>
+    </string-array>
+
 </resources>

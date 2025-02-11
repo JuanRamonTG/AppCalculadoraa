@@ -1,144 +1,108 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 
 public class MainActivity extends AppCompatActivity {
+    TabHost tbh;
     Button btn;
-    TextView lblRespuesta, lblNum2;
-    EditText txtNum1, txtNum2;
+    TextView tempVal;
     Spinner spn;
-
+    Conversores objConversores = new Conversores();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referencias a los elementos de la UI
+        tbh = findViewById(R.id.tbhConversor);
+        tbh.setup();
+
+        // Crear los tabs
+        tbh.addTab(tbh.newTabSpec("Monedas").setContent(R.id.tabMonedas).setIndicator("MONEDAS", null));
+        tbh.addTab(tbh.newTabSpec("Masa").setContent(R.id.tabMasa).setIndicator("MASA", null));
+        tbh.addTab(tbh.newTabSpec("Volumen").setContent(R.id.tabVolumen).setIndicator("VOLUMEN", null));
+        tbh.addTab(tbh.newTabSpec("Longitud").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
+        tbh.addTab(tbh.newTabSpec("Almacenamiento").setContent(R.id.tabAlmacenamiento).setIndicator("ALMACENAMIENTO", null));
+        tbh.addTab(tbh.newTabSpec("Tiempo").setContent(R.id.tabTiempo).setIndicator("TIEMPO", null));
+        tbh.addTab(tbh.newTabSpec("Transferencia de Datos").setContent(R.id.tabTransferencia).setIndicator("TRANSFERENCIA DE DATOS", null));
+
         btn = findViewById(R.id.btnCalcular);
-        lblRespuesta = findViewById(R.id.lblRespuesta);
-        txtNum1 = findViewById(R.id.txtNum1);
-        txtNum2 = findViewById(R.id.txtNum2);
-        lblNum2 = findViewById(R.id.lblNum2);
-        spn = findViewById(R.id.spnOpciones);
-
-        // Evento para ocultar txtNum2 cuando no es necesario
-        spn.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
-                if (position == 4 || position == 7 || position == 8) { // Factorial, Raíz Cuadrada, Raíz Cúbica
-                    txtNum2.setVisibility(View.GONE);
-                    lblNum2.setVisibility(View.GONE);
-                } else {
-                    txtNum2.setVisibility(View.VISIBLE);
-                    lblNum2.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(android.widget.AdapterView<?> parent) { }
-        });
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    double num1 = Double.parseDouble(txtNum1.getText().toString());
-                    double num2 = 0;
+                int opcion = tbh.getCurrentTab(); // Obtener la pestaña seleccionada
 
-                    if (txtNum2.getVisibility() == View.VISIBLE) {
-                        num2 = Double.parseDouble(txtNum2.getText().toString());
-                    }
+                int de = 0, a = 0; // Variables para las posiciones seleccionadas en los Spinner
 
-                    double respuesta = 0.0;
-
-                    switch (spn.getSelectedItemPosition()) {
-                        case 0: // Suma
-                            respuesta = num1 + num2;
-                            break;
-                        case 1: // Resta
-                            respuesta = num1 - num2;
-                            break;
-                        case 2: // Multiplicación
-                            respuesta = num1 * num2;
-                            break;
-                        case 3: // División
-                            if (num2 != 0) {
-                                respuesta = num1 / num2;
-                            } else {
-                                lblRespuesta.setText("Error: División por cero");
-                                return;
-                            }
-                            break;
-                        case 4: // Factorial
-                            if (num1 >= 0 && num1 == (int) num1) {
-                                respuesta = calcularFactorial((int) num1);
-                            } else {
-                                lblRespuesta.setText("Error: Factorial solo acepta enteros positivos");
-                                return;
-                            }
-                            break;
-                        case 5: // Porcentaje (num1 % de num2)
-                            respuesta = (num1 * num2) / 100;
-                            break;
-                        case 6: // Exponenciación (num1^num2)
-                            respuesta = Math.pow(num1, num2);
-                            break;
-                        case 7: // Raíz Cuadrada
-                            if (num1 >= 0) {
-                                respuesta = Math.sqrt(num1);
-                            } else {
-                                lblRespuesta.setText("Error: No se puede calcular raíz cuadrada de un número negativo");
-                                return;
-                            }
-                            break;
-                        case 8: // Raíz Cúbica
-                            respuesta = Math.cbrt(num1);
-                            break;
-                        case 9: // Raíz n-ésima (num1^(1/num2))
-                            if (num2 != 0) {
-                                respuesta = Math.pow(num1, 1 / num2);
-                            } else {
-                                lblRespuesta.setText("Error: No se puede calcular raíz con índice 0");
-                                return;
-                            }
-                            break;
-                    }
-
-                    lblRespuesta.setText("Respuesta: " + respuesta);
-
-                } catch (Exception e) {
-                    lblRespuesta.setText("Error: Entrada no válida");
+                // Obtener los valores de los Spinner según la pestaña seleccionada
+                switch (opcion) {
+                    case 0: // Monedas
+                        spn = findViewById(R.id.spnDeMonedas);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnAMonedas);
+                        a = spn.getSelectedItemPosition();
+                        break;
+                    case 1: // Masa
+                        spn = findViewById(R.id.spnDeMasa);
+                        de = spn.getSelectedItemPosition();
+                        spn = findViewById(R.id.spnAMasa);
+                        a = spn.getSelectedItemPosition();
+                        break;
+                    // Repite para otras pestañas
                 }
+
+                // Obtener la cantidad ingresada por el usuario
+                tempVal = findViewById(R.id.txtCantidad);
+                String cantidadTexto = tempVal.getText().toString();
+
+                // Validar que el campo no esté vacío
+                if (cantidadTexto.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Ingresa una cantidad", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Convertir la cantidad a double
+                double cantidad = Double.parseDouble(cantidadTexto);
+
+                // Realizar la conversión
+                double respuesta = objConversores.convertir(opcion, de, a, cantidad);
+
+                // Mostrar el resultado
+                tempVal = findViewById(R.id.lblRespuesta);
+                tempVal.setText("Respuesta: " + respuesta);
             }
         });
     }
+}
+class Conversores{
+    // Valores de ejemplo, deberías llenarlos con los valores correctos
+    double[][] valores = {
+            {1, 0.98, 7.73}, // Monedas (Ejemplo)
+            {1, 1000, 2.20462, 35.274, 0.001, 15432.4, 0.157473, 0.01, 1e+6, 1e+9}, // Masa (Kilos, Gramos, Libras, onzas)
+            {1, 1000, 0.264172}, // Volumen (Litros, Mililitros, Galones)
+            {1, 0.001, 0.453592}, // Longitud (Metros, Centímetros, Pulgadas)
+            {1, 1024, 1048576}, // Almacenamiento (Bytes, Kilobytes, Megabytes)
+            {1, 60, 3600}, // Tiempo (Segundos, Minutos, Horas)
+            {1, 0.125, 0.000125}, // Transferencia de Datos (Bit, Byte, Kbps)
+    };
 
-    private int calcularFactorial(int n) {
-        int resultado = 1;
-        for (int i = 1; i <= n; i++) {
-            resultado *= i;
-        }
-        return resultado;
+    public double convertir(int opcion, int de, int a, double cantidad){
+        return valores[opcion][a] / valores[opcion][de] * cantidad;
     }
 }
+
