@@ -8,6 +8,8 @@
         <item>Factorial</item>
         <item>Porcentaje</item>
         <item>Exponenciación</item>
+        <item>Raíz Cuadrada</item>
+        <item>Raíz Cúbica</item>
         <item>Raíz n</item>
     </string-array>
 </resources>
