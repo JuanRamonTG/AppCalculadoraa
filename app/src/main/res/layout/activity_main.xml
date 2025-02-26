@@ -28,56 +28,31 @@
                 android:layout_height="match_parent">
 
 
+
                 <RelativeLayout
-                    android:id="@+id/tabMonedas"
+                    android:id="@+id/tabAgua"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/lblDeMonedas"
-                        android:text="DE: "
+                        android:id="@+id/lblConsumo"
+                        android:text="Consumo de agua (m³): "
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-                    <Spinner
-                        android:entries="@array/monedas"
-                        android:id="@+id/spnDeMonedas"
-                        android:layout_below="@id/lblDeMonedas"
-                        android:layout_marginLeft="80dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/lblAMonedas"
-                        android:text="A: "
-                        android:layout_below="@id/spnDeMonedas"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <Spinner
-                        android:entries="@array/monedas"
-                        android:id="@+id/spnAMonedas"
-                        android:layout_below="@id/lblAMonedas"
-                        android:layout_marginLeft="80dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/tabTransferencia"
+                    android:id="@+id/tabArea"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/lblDeTransferencia"
+                        android:id="@+id/lblDeArea"
                         android:text="DE: "
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
@@ -85,27 +60,27 @@
                         android:layout_height="wrap_content"/>
 
                     <Spinner
-                        android:entries="@array/transferencia"
-                        android:id="@+id/spnDeTransferencia"
-                        android:layout_below="@id/lblDeTransferencia"
+                        android:entries="@array/areas"
+                        android:id="@+id/spnDeArea"
+                        android:layout_below="@id/lblDeArea"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:id="@+id/lblATransferencia"
+                        android:id="@+id/lblAArea"
                         android:text="A: "
-                        android:layout_below="@id/spnDeTransferencia"
+                        android:layout_below="@id/spnDeArea"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <Spinner
-                        android:entries="@array/transferencia"
-                        android:id="@+id/spnATransferencia"
-                        android:layout_below="@id/lblATransferencia"
+                        android:entries="@array/areas"
+                        android:id="@+id/spnAArea"
+                        android:layout_below="@id/lblAArea"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"

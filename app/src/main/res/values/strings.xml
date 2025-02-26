@@ -3,36 +3,24 @@
 
     <!-- Categorías de conversiones -->
     <string-array name="categories">
-        <item>Moneda</item>
-        <item>Transferencia de Datos</item>
+        <item>Pago de Agua</item> <!-- cálculo de agua -->
+        <item>Área</item>
     </string-array>
 
-    <!-- Unidades para Moneda -->
-    <string-array name="monedas">
-        <item>USD</item>
-        <item>EUR</item>
-        <item>MXN</item>
-        <item>GBP</item>
-        <item>JPY</item>
-        <item>AUD</item>
-        <item>CAD</item>
-        <item>CHF</item>
-        <item>INR</item>
-        <item>CNY</item>
+    <!-- Rango de consumo de agua en metros cúbicos -->
+    <string-array name="consumo_agua">
+        <item>0-18 m³: Tarifa fija</item>
+        <item>19-28 m³: Tarifa adicional de $0.45/m³</item>
+        <item>29+ m³: Tarifa adicional de $0.65/m³</item>
     </string-array>
 
-    <!-- Unidades para Transferencia de Datos -->
-    <string-array name="transferencia">
-        <item>bps</item>
-        <item>kbps</item>
-        <item>mbps</item>
-        <item>gbps</item>
-        <item>tbps</item>
-        <item>bytes/s</item>
-        <item>kilobytes/s</item>
-        <item>megabytes/s</item>
-        <item>gigabytes/s</item>
-        <item>terabytes/s</item>
+    <string-array name="areas">
+        <item>Pie Cuadrado</item>
+        <item>Vara Cuadrada</item>
+        <item>Yarda Cuadrada</item>
+        <item>Metro Cuadrado</item>
+        <item>Tareas</item>
+        <item>Manzana</item>
+        <item>Hectárea</item>
     </string-array>
-
 </resources>

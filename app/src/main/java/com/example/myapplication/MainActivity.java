@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     TextView tempVal;
     Spinner spn;
-    EditText txtCantidad; // Referencia al EditText
+    EditText txtCantidad;
     Conversores objConversores = new Conversores();
 
     @Override
@@ -40,94 +40,100 @@ public class MainActivity extends AppCompatActivity {
         tbh.setup();
 
         // Crear los tabs
-        tbh.addTab(tbh.newTabSpec("Monedas").setContent(R.id.tabMonedas).setIndicator("MONEDAS", null));
-        tbh.addTab(tbh.newTabSpec("Transferencia").setContent(R.id.tabTransferencia).setIndicator("TRANSFERENCIA", null));
+        tbh.addTab(tbh.newTabSpec("Area").setContent(R.id.tabArea).setIndicator("AREAS", null));
+        tbh.addTab(tbh.newTabSpec("Agua").setContent(R.id.tabAgua).setIndicator("AGUA", null));
 
-
-        // Referencia al EditText y agregar filtro de entrada
         txtCantidad = findViewById(R.id.txtCantidad);
-        InputFilter[] filters = new InputFilter[1];
-        filters[0] = new InputFilter() {
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                // Permitir solo números y un punto decimal
-                for (int i = start; i < end; i++) {
-                    char c = source.charAt(i);
-                    if (!Character.isDigit(c) && c != '.') {
-                        return ""; // Rechazar caracteres no válidos
-                    }
-                }
-                return null; // Aceptar caracteres válidos
-            }
-        };
-        txtCantidad.setFilters(filters);
-
+        tempVal = findViewById(R.id.lblRespuesta);
         btn = findViewById(R.id.btnCalcular);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int opcion = tbh.getCurrentTab(); // Obtener la pestaña seleccionada
 
-                int de = 0, a = 0; // Variables para las posiciones seleccionadas en los Spinner
-
-                // Obtener los valores de los Spinner según la pestaña seleccionada
-                switch (opcion) {
-                    case 0: // CONVERSOR AREA
-                        spn = findViewById(R.id.spnDeMonedas);
-                        de = spn.getSelectedItemPosition();
-                        spn = findViewById(R.id.spnAMonedas);
-                        a = spn.getSelectedItemPosition();
-                        break;
-                    case 1: // Transferencia
-                        spn = findViewById(R.id.spnDeTransferencia);
-                        de = spn.getSelectedItemPosition();
-                        spn = findViewById(R.id.spnATransferencia);
-                        a = spn.getSelectedItemPosition();
-                        break;
-                    default:
-                        Toast.makeText(MainActivity.this, "Opción no válida", Toast.LENGTH_SHORT).show();
-                        return;
+                if (opcion == 2) { // Si está en la pestaña de Agua
+                    calcularPagoAgua();
+                } else {
+                    calcularConversion(opcion);
                 }
-
-                // Obtener la cantidad ingresada por el usuario
-                String cantidadTexto = txtCantidad.getText().toString();
-
-                // Validar que el campo no esté vacío
-                if (cantidadTexto.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Ingresa una cantidad", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Convertir la cantidad a double
-                double cantidad;
-                try {
-                    cantidad = Double.parseDouble(cantidadTexto);
-                } catch (NumberFormatException e) {
-                    Toast.makeText(MainActivity.this, "Ingresa un número válido", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Realizar la conversión
-                double respuesta = objConversores.convertir(opcion, de, a, cantidad);
-
-                // Mostrar el resultado
-                tempVal = findViewById(R.id.lblRespuesta);
-                tempVal.setText("Respuesta: " + respuesta);
             }
         });
     }
-}
 
+    private void calcularPagoAgua() {
+        String consumoStr = txtCantidad.getText().toString();
 
-class Conversores{
-    // Valores de ejemplo, deberías llenarlos con los valores correctos
-    double[][] valores = {
-            {1, 0.97, 20.63, 0.81, 152.33, 1.59, 1.43, 0.91, 86.69, 7.31}, // Monedas (Ejemplo)
-            {1, 0.001, 1e-6, 1e-9, 1e-12, 0.125, 0.000125, 1.25e-7, 1.25e-10, 1.25e-13}, // Transferencia de Datos (Bit, Byte, Kbps)
-    };
+        if (consumoStr.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Ingresa un consumo válido", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-    public double convertir(int opcion, int de, int a, double cantidad){
-        return valores[opcion][a] / valores[opcion][de] * cantidad;
+        int consumo = Integer.parseInt(consumoStr);
+        double pagoTotal = calcularTarifaAgua(consumo);
+
+        tempVal.setText("Total a pagar: $" + String.format("%.2f", pagoTotal));
+    }
+
+    private double calcularTarifaAgua(int consumo) {
+        double cuotaFija = 6.0;
+        double pagoTotal = cuotaFija;
+
+        if (consumo > 28) {
+            int excesoSobre28 = consumo - 28;
+            pagoTotal += excesoSobre28 * 0.65;
+            consumo = 28;
+        }
+
+        if (consumo > 18) {
+            int excesoSobre18 = consumo - 18;
+            pagoTotal += excesoSobre18 * 0.45;
+        }
+
+        return pagoTotal;
+    }
+
+    private void calcularConversion(int opcion) {
+        int de = 0, a = 0;
+
+        switch (opcion) {
+            case 0: // MONEDAS
+                spn = findViewById(R.id.spnDeArea);
+                de = spn.getSelectedItemPosition();
+                spn = findViewById(R.id.spnAArea);
+                a = spn.getSelectedItemPosition();
+                break;
+            default:
+                Toast.makeText(MainActivity.this, "Opción no válida", Toast.LENGTH_SHORT).show();
+                return;
+        }
+
+        String cantidadTexto = txtCantidad.getText().toString();
+
+        if (cantidadTexto.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Ingresa una cantidad", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double cantidad;
+        try {
+            cantidad = Double.parseDouble(cantidadTexto);
+        } catch (NumberFormatException e) {
+            Toast.makeText(MainActivity.this, "Ingresa un número válido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double respuesta = objConversores.convertir(opcion, de, a, cantidad);
+        tempVal.setText("Respuesta: " + String.format("%.2f", respuesta));
     }
 }
 
+class Conversores {
+    double[][] valores = {
+            {1, 0.97, 20.63, 0.81, 152.33, 1.59, 1.43, 0.91, 86.69, 7.31}, // Monedas
+    };
+
+    public double convertir(int opcion, int de, int a, double cantidad) {
+        return valores[opcion][a] / valores[opcion][de] * cantidad;
+    }
+}
