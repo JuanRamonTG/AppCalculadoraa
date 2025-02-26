@@ -7,13 +7,6 @@
         <item>Área</item>
     </string-array>
 
-    <!-- Rango de consumo de agua en metros cúbicos -->
-    <string-array name="consumo_agua">
-        <item>0-18 m³: Tarifa fija</item>
-        <item>19-28 m³: Tarifa adicional de $0.45/m³</item>
-        <item>29+ m³: Tarifa adicional de $0.65/m³</item>
-    </string-array>
-
     <string-array name="areas">
         <item>Metro Cuadrado</item>
         <item>Pie Cuadrado</item>
