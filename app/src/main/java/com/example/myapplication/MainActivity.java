@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int opcion = tbh.getCurrentTab(); // Obtener la pestaña seleccionada
 
-                if (opcion == 2) { // Si está en la pestaña de Agua
+                if (opcion == 1) { // Si está en la pestaña de Agua
                     calcularPagoAgua();
                 } else {
                     calcularConversion(opcion);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         double respuesta = objConversores.convertir(opcion, de, a, cantidad);
-        tempVal.setText("Respuesta: " + String.format("%.8f", respuesta));
+        tempVal.setText("Respuesta: " + String.format("%.6f", respuesta));
     }
 }
 
