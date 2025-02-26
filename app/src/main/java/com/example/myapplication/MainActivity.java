@@ -124,13 +124,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         double respuesta = objConversores.convertir(opcion, de, a, cantidad);
-        tempVal.setText("Respuesta: " + String.format("%.2f", respuesta));
+        tempVal.setText("Respuesta: " + String.format("%.8f", respuesta));
     }
 }
 
 class Conversores {
     double[][] valores = {
-            {1, 0.97, 20.63, 0.81, 152.33, 1.59, 1.43, 0.91, 86.69, 7.31}, // Monedas
+            {1, 10.7639, 1.4324, 1.19599, 0.001, 0.000142857, 0.0001},
     };
 
     public double convertir(int opcion, int de, int a, double cantidad) {
