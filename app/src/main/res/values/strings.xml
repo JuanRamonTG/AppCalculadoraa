@@ -4,11 +4,6 @@
     <!-- Categorías de conversiones -->
     <string-array name="categories">
         <item>Moneda</item>
-        <item>Masa</item>
-        <item>Volumen</item>
-        <item>Longitud</item>
-        <item>Almacenamiento</item>
-        <item>Tiempo</item>
         <item>Transferencia de Datos</item>
     </string-array>
 
@@ -24,76 +19,6 @@
         <item>CHF</item>
         <item>INR</item>
         <item>CNY</item>
-    </string-array>
-
-    <!-- Unidades para Masa -->
-    <string-array name="masa">
-        <item>kg</item>
-        <item>g</item>
-        <item>lb</item>
-        <item>oz</item>
-        <item>tonelada</item>
-        <item>grano</item>
-        <item>stone</item>
-        <item>quintal</item>
-        <item>miligramos</item>
-        <item>microgramos</item>
-    </string-array>
-
-    <!-- Unidades para Volumen -->
-    <string-array name="volumen">
-        <item>litros</item>
-        <item>mililitros</item>
-        <item>galones</item>
-        <item>onzas líquidas</item>
-        <item>pintas</item>
-        <item>cuartos</item>
-        <item>centímetros cúbicos</item>
-        <item>metros cúbicos</item>
-        <item>pies cúbicos</item>
-        <item>yardas cúbicas</item>
-    </string-array>
-
-    <!-- Unidades para Longitud -->
-    <string-array name="longitud">
-        <item>metros</item>
-        <item>centímetros</item>
-        <item>kilómetros</item>
-        <item>millas</item>
-        <item>pies</item>
-        <item>yardas</item>
-        <item>pulgadas</item>
-        <item>millas náuticas</item>
-        <item>nanómetros</item>
-        <item>micrómetros</item>
-    </string-array>
-
-    <!-- Unidades para Almacenamiento -->
-    <string-array name="almacenamiento">
-        <item>bytes</item>
-        <item>kilobytes</item>
-        <item>megabytes</item>
-        <item>gigabytes</item>
-        <item>terabytes</item>
-        <item>petabytes</item>
-        <item>exabytes</item>
-        <item>zettabytes</item>
-        <item>yottabytes</item>
-        <item>kilobits</item>
-    </string-array>
-
-    <!-- Unidades para Tiempo -->
-    <string-array name="tiempo">
-        <item>segundos</item>
-        <item>minutos</item>
-        <item>horas</item>
-        <item>días</item>
-        <item>semanas</item>
-        <item>meses</item>
-        <item>años</item>
-        <item>milisegundos</item>
-        <item>microsegundos</item>
-        <item>nanosegundos</item>
     </string-array>
 
     <!-- Unidades para Transferencia de Datos -->
